@@ -20,12 +20,13 @@ with open("input.txt", "r") as file:
     for line in file:
         numbers = re.findall(r'\b\d+\b', line)
         sequence = []
-
+        
         for number in map(int, numbers):
             sequence.append(number)
-
-        if sequence:
-            sequence.sort()
+        
+        if len(sequence) > 1 and sequence == sorted(sequence):
             min_number = sequence[0]
             min_number_words = number_to_words(min_number)
+            
             print(' '.join(map(str, sequence)) + f': {min_number_words} - минимальное число')
+
